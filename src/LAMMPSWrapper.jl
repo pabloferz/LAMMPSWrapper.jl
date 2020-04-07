@@ -84,7 +84,7 @@ Throws is instance `o` is currently inactive.
 """
 function check_state(o::LAMMPSObject)
     if !initialized(o)
-        throw("LAMMPS instance is inactive")
+        error("LAMMPS instance is inactive")
     end
     return nothing
 end
@@ -103,7 +103,7 @@ Restarts an inactive LAMMPS instance `o`.
 """
 function reset!(o::LAMMPSObject; args = o.args, comm = o.comm)
     if initialized(o)
-        throw("cannot reset active LAMMPS objects")
+        error("cannot reset active LAMMPS objects")
     end
 
     ptrref = Ref{LAMMPSPtr}(C_NULL)
@@ -606,7 +606,7 @@ function __init__()
     buffer = Vector{UInt8}(undef, 32)
     buffer_ptr = pointer(buffer)
     empty!(PACKAGES)
-    for i in 0:package_count
+    for i in 0:(package_count - 1)
         ccall(
             (:lammps_config_package_name, liblammps),
             Cint,
