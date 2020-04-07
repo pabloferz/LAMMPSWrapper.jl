@@ -3,6 +3,12 @@ uuid = "40124f7c-c6eb-472f-a480-794641e4cfd4"
 authors = ["Pablo Zubieta"]
 version = "0.1.0"
 
+[deps]
+FilePathsBase = "48062228-2e41-5def-b9a4-89aafe57970f"
+MPI = "da04e1cc-30fd-572f-bb4f-1f8673147195"
+Reexport = "189a3867-3050-52da-a836-e630ba90ab69"
+LAMMPS_jll = "5b3ab26d-9607-527c-88ea-8fe5ba57cafe"
+
 [compat]
 julia = "1.3.1"
 
